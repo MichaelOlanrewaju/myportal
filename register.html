@@ -1,0 +1,407 @@
+<html ng-app="flicksApps">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwara State University, Malete -  </title>
+
+
+    <meta name="csrf-token" content="6Qhmnz1Kf8sHqqm1yRiwSmcRzjtAzqgLskYwf4wO">
+    
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/toastr.min.css" rel="stylesheet">
+    <link href="css/sweetalert.css" rel="stylesheet">
+    
+
+ 
+</head>
+<body class="top-navigation">
+     <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+               
+                <img alt="image" class src="images/kwasulogo.jpg">
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-sign-in"></i> Log In
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        </div>
+           
+         
+
+    <div class="wrapper wrapper-content animated fadeInRight" data-ng-controller="ApplicantController">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+
+
+                    <div class="col-lg-7">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>INSTRUCTION</h5>
+
+                            </div>
+                            <div class="ibox-content">
+                                <div class="scroll_content">
+                                    <h5>Online Registration</h5>
+                                    <p>
+
+                                        Complete the registration form by providing required information as indicated and
+                                        click on <b>Create an Account</b> to register.
+                                        Once you create an account or register with Kwara State University, you will be
+                                        automatically logged in.
+                                        The system will automatically send SMS and email notification to your email and
+                                        phone number to communicate your application details and login credentials.
+
+                                        Your username is the email address you entered at the point of registration and
+                                        your surname (last name) is your password. When you have completed the
+                                        registration, a unique application number would be assigned to you. The
+                                        application number should be used as the username while the applicant’s surname
+                                        (last name) is maintained as the password which can be changed to a stronger one
+                                        later by you.
+                                    </p>
+
+                                    <h5>Admission</h5>
+                                    <p>
+                                        Admission into Kwara State University is based on merit. Applicants are expected
+                                        to possess minimum O’level, UTME, and POST-UTME, or other entry requirements.</p>
+                                    <ol>
+                                        <li> Applicants seeking admission into KWASU regular based programmes and KWASU
+                                            other programmes are to ensure that all information entered about them
+                                            are true and correct to the best of their knowledge.</li>
+
+                                        <li> Applicants seeking admission into KWASU other programmes must first
+                                            visit www.kwasu.edu.ng for stipulated entry requirements, and then follow
+                                            the instructions to proceed with an online application.</li>
+                                    </ol>
+                                    <h5>Payment</h5>
+                                    <p></p>
+                                        All payments are made with ATM card.<br>
+
+                                        Disclaimer: 
+                                        <ol>
+                                        <li>KWASU is not responsible for any wrong payments</li>
+                                        <li>Ensure you read instructions very well before proceeding to payment.</li><br>
+                                         </ol>For further enquiry, contact cithelpdesk@kwasu.edu.ng
+                                         
+                                       <h5> Required Documents</h5>
+                                      
+                                       Keep ready with you the following details / documents / Information, before starting to fill up the on-line application
+
+                                    <ol>
+                                        <li>Valid and active Email ID</li>
+                                        <li>Personal details</li>
+                                        <li>Educational qualification details</li>
+                                        <li>Image of scanned photograph in jpg / jpeg format and size should not exceed
+                                            50 KB
+                                        </li>
+                                        <li>Image of scanned signature in jpg / jpeg format and size should not exceed
+                                            50 KB
+                                        </li>
+                                        <li>Image of scanned certificates in jpg/jpeg, pdf format and size should not
+                                            exceed 50 kB
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="ibox-title">
+                            <h5>APPLICATION FORM</h5>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+
+                                    <div class="ibox-content">
+                                        <div ng-if="alert" ng-cloak class="alert alert-{{ alert.status }}">
+                                            {{ alert.message }}
+                                        </div>
+                                        <form name="frmapplicant" id="frmapplicant" method="post" class="form-horizontal" data-ng-show="!attemptedStatus">
+                                            <input type="hidden" name="_token" value="6Qhmnz1Kf8sHqqm1yRiwSmcRzjtAzqgLskYwf4wO">
+
+                                            <div class="form-group">
+
+                                                <input type="text" placeholder="Surname" class="form-control" name="surname" id="surname" data-ng-init="aapplicant.surname=''" data-ng-class="frmapplicant.surname.$invalid && frmapplicant.surname.$touched ? 'form-control error' : 'form-control'" data-ng-model="aapplicant.surname" data-ng-required="true">
+                                                <label id="surname-error" class="error" for="surname" data-ng-cloak data-ng-show="frmapplicant.surname.$invalid && frmapplicant.surname.$touched">Surname
+                                                    is required</label>
+                                                <label id="surname-error" class="error" for="surname" data-ng-cloak data-ng-show="errors.length">{{ errors[0].surname[0]}}</label>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="text" placeholder="First Name" class="form-control" name="first_name" id="first_name" data-ng-init="aapplicant.first_name=''" data-ng-class="frmapplicant.first_name.$invalid && frmapplicant.first_name.$touched ? 'form-control error' : 'form-control'" data-ng-model="aapplicant.first_name" data-ng-required="true">
+                                                <label id="first_name-error" class="error" for="first_name" data-ng-cloak data-ng-show="frmapplicant.first_name.$invalid && frmapplicant.first_name.$touched">First
+                                                    name is required</label>
+                                                <label id="first_name-error" class="error" for="first_name" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].first_name[0]}}</label>
+
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="text" placeholder="Other Name" class="form-control" name="other_name" id="other_name" data-ng-init="aapplicant.other_name=''" data-ng-class="frmapplicant.other_name.$invalid && frmapplicant.other_name.$touched ? 'form-control error' : 'form-control'" data-ng-model="aapplicant.other_name" data-ng-required="false">
+                                                <label id="other_name-error" class="error" for="other_name" data-ng-cloak data-ng-show="frmapplicant.other_name.$invalid && frmapplicant.other_name.$touched">Other
+                                                    name is required</label>
+                                                <label id="other_name-error" class="error" for="other_name" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].other_name[0]}}</label>
+
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <input placeholder="Phone Number (234 803 000 0000)" type="text" class="form-control" name="phone_number" id="phone_number" data-ng-init="aapplicant.phone_number=''" data-ng-class="frmapplicant.phone_number.$invalid && frmapplicant.phone_number.$touched ? 'form-control error' : 'form-control'" data-ng-model="aapplicant.phone_number" data-ng-required="true" data-mask="(+999) 999-999-9999">
+                                                <label id="phone_number-error" class="error" for="phone_number" data-ng-cloak data-ng-show="frmapplicant.phone_number.$invalid && frmapplicant.phone_number.$touched">Phone
+                                                    number is required</label>
+                                                <label id="phone_number-error" class="error" for="phone_number" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].phone_no[0]}}</label>
+
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input placeholder="Email Address" type="text" class="form-control" name="email_address" id="email_address" data-ng-init="aapplicant.email_address=''" data-ng-class="frmapplicant.email_address.$invalid && frmapplicant.email_address.$touched ? 'form-control error' : 'form-control'" data-ng-model="aapplicant.email_address" data-ng-required="true">
+                                                <label id="email_address-error" class="error" for="email_address" data-ng-cloak data-ng-show="frmapplicant.email_address.$invalid && frmapplicant.email_address.$touched">Email
+                                                    address is required</label>
+                                                <label id="email_address-error" class="error" for="email_address" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].email_address[0] }}</label>
+
+
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <select class="form-control  m-b" name="academic_programme" id="academic_programme" data-ng-change="initProgrammeCall(aapplicant.academic_programme_id)" data-ng-model="aapplicant.academic_programme_id" data-ng-required="true">
+                                                    <option> --- Academic Programme ---</option>
+                                                                                                            <option value="1">Undergraduate
+                                                            (Topup Degree/HND Conversion Programme)
+                                                        </option>
+                                                                                                            <option value="5">Undergraduate
+                                                            (Regular)
+                                                        </option>
+                                                                                                            <option value="9">Undergraduate
+                                                            (IDEL Extended Regular)
+                                                        </option>
+                                                                                                            <option value="10">Undergraduate
+                                                            (IDEL Part-Time/Weekend)
+                                                        </option>
+                                                                                                            <option value="20">Certification
+                                                            (Diploma in Visual and Performing Arts)
+                                                        </option>
+                                                                                                            <option value="21">Certification
+                                                            (Advanced Certificate in Filmmaking)
+                                                        </option>
+                                                                                                            <option value="22">Postgraduate
+                                                            (Regular)
+                                                        </option>
+                                                                                                            <option value="23">Postgraduate
+                                                            (IPAS)
+                                                        </option>
+                                                                                                            <option value="25">Undergraduate
+                                                            (SANDWICH)
+                                                        </option>
+                                                                                                            <option value="26">Postgraduate
+                                                            (SANDWICH)
+                                                        </option>
+                                                                                                            <option value="30">Diploma
+                                                            (Diploma in Law)
+                                                        </option>
+                                                                                                            <option value="31">Certification
+                                                            (Basic Solar Energy )
+                                                        </option>
+                                                                                                            <option value="32">Certification
+                                                            (Intermediate Solar Energy)
+                                                        </option>
+                                                                                                            <option value="33">Certification
+                                                            (Advanced Solar Energy)
+                                                        </option>
+                                                                                                    </select>
+                                                                                                <label id="academic_programme_id-error" class="error" for="academic_programme_id" data-ng-cloak data-ng-show="frmapplicant.academic_programme_id.$invalid && frmapplicant.academic_programme_id.$touched">please
+                                                    select programme</label>
+                                                <label id="academic_programme_id-error" class="error" for="academic_programme_id" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].academic_programme_id[0]}}</label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <select data-ng-class="frmapplicant.academic_mode_entry.$invalid && frmapplicant.academic_mode_entry.$touched ? 'form-control error' : 'form-control'" name="academic_mode_entry" id="academic_mode_entry" data-ng-init="aapplicant.academic_mode_entry" data-ng-model="aapplicant.academic_mode_entry" data-ng-required="true" class="ng-pristine ng-valid form-control ng-valid-required ng-touched">
+                                                    <option value> --- Select Mode of Entry ---</option>
+                                                    <option value="{{ms.id}}" ng-repeat="ms in AcademicModeEntries">
+                                                        {{ms.modeentry.academic_mode_entry_standard}}
+                                                    </option>
+                                                </select>
+                                                <div data-ng-show="modeentryloader"><i class="fa fa-spin fa-spinner"></i> Please wait
+                                                </div>
+                                                <label id="academic_mode_entry-error" class="error" for="academic_mode_entry" data-ng-cloak data-ng-show="frmapplicant.academic_mode_entry.$invalid && frmapplicant.academic_mode_entry.$touched">please
+                                                    select mode of entry</label>
+                                                <label id="academic_mode_entry-error" class="error" for="academic_mode_entry" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].academic_mode_entry[0]}}</label>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <select data-ng-class="frmapplicant.academic_mode_study.$invalid && frmapplicant.academic_mode_study.$touched ? 'form-control error' : 'form-control'" name="academic_mode_study" id="academic_mode_study" data-ng-init="aapplicant.academic_mode_study" data-ng-model="aapplicant.academic_mode_study" data-ng-required="true" class="ng-pristine ng-valid form-control ng-valid-required ng-touched">
+                                                    <option value> --- Select Mode of Study ---</option>
+                                                    <option value="{{ms.id}}" ng-repeat="ms in ProgAcademicModeStudy">
+                                                        {{ms.academic_mode_study_standard}}
+                                                    </option>
+                                                </select>
+                                                <div data-ng-show="progmodestudyloader"><i class="fa fa-spin fa-spinner"></i> Please wait
+                                                </div>
+                                                <label id="academic_mode_study-error" class="error" for="academic_mode_study" data-ng-cloak data-ng-show="frmapplicant.academic_mode_study.$invalid && frmapplicant.academic_mode_study.$touched">please
+                                                    select mode of study</label>
+                                                <label id="academic_mode_study-error" class="error" for="academic_mode_study" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].academic_mode_study[0]}}</label>
+
+                                            </div>
+
+                                            <div class="form-group" data-ng-show="AcademicProgrammeCentres.length">
+                                                <select data-ng-class="frmapplicant.academic_programme_centre_id.$invalid && frmapplicant.academic_programme_centre_id.$touched ? 'form-control error' : 'form-control'" name="academic_programme_centre_id" id="academic_programme_centre_id" data-ng-init="aapplicant.academic_programme_centre_id" data-ng-model="aapplicant.academic_programme_centre_id" data-ng-required="AcademicProgrammeCentres.length" class="ng-pristine ng-valid form-control ng-valid-required ng-touched">
+                                                    <option value> --- Select Center ---</option>
+                                                    <option value="{{pc.id}}" ng-repeat="pc in AcademicProgrammeCentres">
+                                                        {{pc.progcentre.programme_centre}}
+                                                    </option>
+                                                </select>
+                                                <div data-ng-show="academidprogrammecentreloader"><i class="fa fa-spin fa-spinner"></i> Please wait
+                                                </div>
+                                                <label id="academic_programme_centre_id-error" class="error" for="academic_programme_centre_id" data-ng-cloak data-ng-show="frmapplicant.academic_programme_centre_id.$invalid && frmapplicant.academic_programme_centre_id.$touched">please
+                                                    select programme centre</label>
+                                                <label id="academic_programme_centre_id-error" class="error" for="academic_programme_centre_id" data-ng-cloak data-ng-show="errors.length">{{
+                                                    errors[0].academic_programme_centre_id[0]}}</label>
+
+                                            </div>
+
+
+                                            <button class="btn btn-primary block full-width m-b" id="utbtn" type="submit" data-ng-click="addApplicant()" data-ng-disabled="frmapplicant.$invalid"><i class="fa fa-registered"></i> Register
+                                            </button>
+                                            <p class="text-muted text-center">
+                                                <small>Already have an account?</small>
+                                            </p>
+                                            <a class="btn btn-sm btn-white btn-block" href="index.html">Login</a>
+                                        </form>
+
+                                        <form method="post" class="form-horizontal" data-ng-show="attemptedStatus">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Previous Applicant</label>
+                                                <div class="col-sm-8"><input type="text" readonly class="form-control" value="{{ attemptedDetails.name }}"></div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Previous Admission Session</label>
+                                                <div class="col-sm-8"><input type="text" readonly class="form-control" value="{{ attemptedDetails.session }}"></div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Previous Course</label>
+                                                <div class="col-sm-8"><input type="text" readonly class="form-control" value="{{ attemptedDetails.course }}"></div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Previous Mode of Study</label>
+                                                <div class="col-sm-8"><input type="text" readonly class="form-control" value="{{ attemptedDetails.mode_study }}"></div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Previous Mode of Entry</label>
+                                                <div class="col-sm-8"><input type="text" readonly class="form-control" value="{{ attemptedDetails.mode_entry }}"></div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">Previous Admission Status</label>
+                                                <div class="col-sm-8"><input type="text" readonly class="form-control" value="{{ attemptedDetails.admission_status }}"></div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-10 col-sm-offset-2">
+                                                    <button class="btn btn-danger" type="button" data-ng-click="applicantTryAgain()"><i class="fa fa-times-circle"></i> Cancel, try with another email</button>
+                                                    <button class="btn btn-primary" type="button" data-ng-click="updateExistingApplicant($event)"><i class="fa fa-check-circle"></i> Override, continue as Me</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+                 
+         <!-- Footer -->
+            <div class="footer fixed">
+    <div class="pull-right">
+      
+
+        <img src="images/cit.png" style="width: 90px; padding-right: 10px;">
+        <span id="siteseal"><script async type="text/javascript" src="getSeal.html"></script></span>
+
+        <script type="text/javascript" src="js/1.js" async></script>
+
+    </div>
+    <div style="padding-top: 10px;">
+        <strong>Copyright</strong> KWASU EMIS <small>&copy; 2017-2019</small>
+    </div>
+</div>
+        </div>
+        </div> 
+   
+   
+
+    <!--<script src="https://myportal.kwasu.edu.ng/public/js/app.js" type="text/javascript"></script>-->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.metisMenu.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="js/flicks.js"></script>
+    <script src="js/flicksapp.js"></script>
+    <script src="js/pace.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+        
+    <script src="js/app.js"></script>
+    
+    
+    <script src="js/datatables.min.js"></script>
+    <script src="js/angular-datatables.min.js"></script>
+    <script src="js/angular-datatables.buttons.min.js"></script>
+
+     <script src="js/angular-sanitize.js" type="text/javascript"></script>
+  <script src="js/ng-file-upload.min.js" type="text/javascript"></script>
+  <script src="js/ng-file-upload-shim.min.js" type="text/javascript"></script>
+
+  <script>
+            </script>
+        <script src="js/application_form.js"></script>
+    <script src="js/application_form_1.js"></script>
+    <!-- Input Mask-->
+    <script src="js/jasny-bootstrap.min.js"></script>
+ 
+    <script src="js/flicksaccess.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="flicksApps">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="6Qhmnz1Kf8sHqqm1yRiwSmcRzjtAzqgLskYwf4wO">
+
+    <title>Kwara State University, Malete</title>
+    <link rel="icon" href="images/kwasu.png" type="image/png">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="css/sweetalert.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel ={"csrfToken":"6Qhmnz1Kf8sHqqm1yRiwSmcRzjtAzqgLskYwf4wO"}    </script>
+
+</head>
+<body class="gray-bg" style="background-image: url(images/bg.jpg); background-size: cover;" data-ng-controller="flicksAuthController">
+
+    <div class="loginColumns animated fadeInDown" data-ng-init="zoomB()">
+        <div class="row">
+
+            <div class="col-md-6" style="text-align: center">
+                <img alt="image" class src="images/kwasu.png" style="width:100px;">
+        
+                <h2 class="font-bold">Welcome to <br>Kwara State University, Malete</h2>
+
+             </div>
+    
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <form id="frmlogin" name="frmlogin" class="m-t" role="form" method="POST">
+                        <input type="hidden" name="_token" value="6Qhmnz1Kf8sHqqm1yRiwSmcRzjtAzqgLskYwf4wO">
+
+                        <div data-ng-class="frmlogin.user_name.$invalid && frmlogin.user_name.$touched ? 'form-group has-error' : 'form-group'">
+                            <input id="user_name" type="text" class="form-control" name="user_name" value placeholder="Username" data-ng-model="login.user_name" data-ng-required="true" autofocus>
+                            <span class="help-block" data-ng-show="frmlogin.user_name.$invalid && frmlogin.user_name.$touched">Username is required</span>
+                            <!--<span class="help-block" data-ng-show="frmlogin.user_name.$error.user_name">Valid user_name is required</span>-->
+                                                    </div>
+
+                        <div data-ng-class="frmlogin.password.$invalid && frmlogin.password.$touched ? 'form-group has-error' : 'form-group'">
+                            <input id="password" type="password" class="form-control" placeholder="Password" name="password" data-ng-minlength="3" data-ng-model="login.password" data-ng-required="true">
+                            <span class="help-block"></span>
+                            
+                                                    </div>
+                        <button type="submit" class="btn btn-primary block full-width m-b" data-ng-click="confirmLogin($event)" data-ng-disabled="frmlogin.$invalid">Login</button>
+
+                        <a href="reset.html">
+                            <small>Forgot password?</small>
+                        </a>
+
+                        <p class="text-muted text-center">
+                            <small>Do not have an account?</small>
+                        </p>
+                        <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account (For Applicant Only)</a>
+                    </form>
+                    <p class="m-t">
+                        <small>The best you can get</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr style="border: #1b592b 0.9px solid;">
+        <div class="row">
+            <div class="col-md-6">
+                Copyright Kwara State University, Malete
+            </div>
+            <div class="col-md-6 text-right">
+                <small>&copy; 2017-2019</small>
+            </div>
+        </div>
+    </div>
+   
+
+    <!-- Scripts -->
+    <script src="js/app_1.js"></script>
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.metisMenu.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/ocLazyLoad.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/flicksauth.js"></script>
+</body>
+</html>
